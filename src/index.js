@@ -8,7 +8,7 @@ export default {
 			if (!objectName || objectName.endsWith('/')) {
 				const options = { 
 					prefix: objectName,
-					delimiter: '/',
+					//delimiter: '/',
 					include: []
 				}
 				let listing = null

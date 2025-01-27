@@ -1,0 +1,14 @@
+name = "cf-r2-browser"
+main = "src/index.js"
+compatibility_date = "2024-12-18"
+
+#[[r2_buckets]]
+#binding = "bucketvar"
+#bucket_name = "bucketname"
+
+#[route]
+#pattern="sub.domain.com/*"
+#zone_name = "domain.com"
+
+#[vars]
+#"sub.domain.com"="bucketvar"

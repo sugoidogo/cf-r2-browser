@@ -6,7 +6,11 @@ export default {
 		const objectName = url.pathname.substring(1)
 		if (request.method === 'GET') {
 			if (!objectName || objectName.endsWith('/')) {
-				const options = { prefix: objectName }
+				const options = { 
+					prefix: objectName,
+					delimiter: '/',
+					include: []
+				}
 				let listing = null
 				const list = new Set()
 				do {
@@ -15,7 +19,10 @@ export default {
 					for (const object of listing.objects) {
 						/** @type {String} */
 						let itemName = object.key.slice(objectName.length)
-						itemName = itemName.substring(itemName.indexOf('/') + 1)
+						const length=itemName.indexOf('/') + 1
+						if(length>0){
+							itemName=itemName.substring(0,length)
+						}
 						list.add(itemName)
 					}
 				} while (listing.truncated)
@@ -24,7 +31,7 @@ export default {
 				}
 				let body = '<h1>listing of /' + objectName + '</h1><br>'
 				for (const itemName of list) {
-					body += '<a href=' + itemName + '>' + itemName + '</a>'
+					body += '<a href="' + itemName + '">' + itemName + '</a><br>'
 				}
 				return new Response(body, { headers: { 'content-type': 'text/html' } })
 			}

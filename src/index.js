@@ -3,7 +3,7 @@ export default {
 		const url = new URL(request.url)
 		const bucketName = env[url.hostname]
 		const bucket = env[bucketName]
-		const objectName = url.pathname.substring(1)
+		const objectName = decodeURIComponent(url.pathname.substring(1))
 		if (request.method === 'GET') {
 			if (!objectName || objectName.endsWith('/')) {
 				const options = { 

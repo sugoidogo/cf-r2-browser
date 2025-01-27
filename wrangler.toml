@@ -2,13 +2,16 @@ name = "cf-r2-browser"
 main = "src/index.js"
 compatibility_date = "2024-12-18"
 
-#[[r2_buckets]]
-#binding = "bucketvar"
-#bucket_name = "bucketname"
+#r2_buckets=[
+#    {binding = "bucketvar",bucket_name = "bucketname"},
+#    {binding="bucketvar2",bucket_name="bucketname2"}
+#]
 
-#[route]
-#pattern="sub.domain.com"
-#custom_domain=true
+#routes=[
+#    {pattern="sub.domain.com",custom_domain=true},
+#    {pattern="dom.domain.com",custom_domain=true},
+#]
 
 #[vars]
 #"sub.domain.com"="bucketvar"
+#"dom.domain.com"="bucketvar2"
